@@ -322,9 +322,6 @@ nav{
 
 }
 
-.rating{
-    color: gold;
-}
 
 /* INDEX */
 .user{
@@ -370,22 +367,25 @@ a.btn {
 
 
 @media (max-width: 480px) {
-  .HP{
-    width: 70%;
+  .HP {
+    width: 100%;        /* dari 70% → penuh agar grid rapi */
+    max-width: 100%;
   }
 }
+
 /* FOOTER */
- .social-btn {
-    transition: 0.25s ease-in-out;
-  }
-  .social-btn:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-  }
-  /* FOOTER RESPONSIVE UNTUK HP */
+.social-btn {
+  transition: 0.25s ease-in-out;
+}
+
+.social-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* FOOTER RESPONSIVE UNTUK HP */
 @media (max-width: 768px) {
 
-  /* Buat semua kolom center */
   .footerr {
     text-align: center;
   }
@@ -401,7 +401,6 @@ a.btn {
     line-height: 1.5;
   }
 
-  /* List biar tidak mepet */
   .footerr ul {
     padding-left: 0 !important;
   }
@@ -410,18 +409,15 @@ a.btn {
     margin-bottom: 6px;
   }
 
-  /* Paragraf biar center & tidak terlalu lebar */
   .footerr p {
     max-width: 260px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
   }
-
 }
 
-@media (max-width:768px) {
-  .footer-ikuti{
-    margin-top: 100px;
+@media (max-width: 768px) {
+  .footer-ikuti {
+    margin-top: 48px;   /* dari 100px → lebih proporsional di HP */
   }
 }
 

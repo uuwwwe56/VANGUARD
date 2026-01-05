@@ -209,50 +209,6 @@ require_once '../../middleware/auth.php';
         </div>
     </div>
 
-    <!-- PRODUK -->
-    <div class="container-fluid py-5" id="produk">
-        <div class="container py-4">
-            <h3 class="mb-2 text-center mt-5 fs-2 fw-bold">Produk</h3>
-
-            <!-- BAJU -->
-            <div id="baju">
-                <h2 class="text-center pb-1 font-monospace"
-                    data-aos-anchor-placement="center-bottom">Baju</h2>
-                <div class="row">
-                    <div class="card-slider produk d-flex overflow-auto gap-3 pb-3">
-
-                        <div class="col-lg-3 col-md-4 col-6 HP my-4">
-                            <div class="card card-hover-scale">
-                                <img src="gambar/b1.jpg" class="card-img-top" alt="..." />
-                                <div class="card-body">
-                                    <p>
-                                        <span class="fs-5 fw-bold">Best Seller</span>
-                                        <span class="fw-bold">Vanguard</span> - DRAGON WAR
-                                    </p>
-                                    <div class="">
-                                        <span>Rp.170.000</span>
-                                        <del class="text-muted">Rp.250.000</del>
-                                    </div>
-                                    <div class="rating">
-                                        ★★★★★
-                                        <span class="text-muted">5780</span>
-                                        <span class="text-dark">terjual</span>
-                                    </div>
-                                    <p class="mt-2"><i class="bi bi-geo-alt"></i> Cianjur</p>
-                                    <a href="#" class="btn btn-primary beli-btn">Beli</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-    <!-- ====================================== -->
-
     <!-- DROPDOWN M -->
     <div class="contaner-fluid">
         <div class="container">
@@ -523,7 +479,7 @@ require_once '../../middleware/auth.php';
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="../../assets/js/script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({

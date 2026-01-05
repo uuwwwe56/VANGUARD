@@ -18,21 +18,15 @@ foreach ($produk as $p) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produk - Vanguard</title>
     <link rel="icon" type="image/png" href="../../../assets/img/Home/L_Vg.png">
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-        crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../../../assets/css/dasboard.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../../assets/css/dasboard.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
 
-
-    <!-- PRODUK -->
     <div class="container-fluid py-5" id="produk">
         <div class="container py-4">
 
@@ -49,10 +43,9 @@ foreach ($produk as $p) {
 
             <?php foreach ($produkPerKategori as $kategori => $items): ?>
 
-                <!-- KATEGORI -->
-                <div id="<?= strtolower(str_replace(' ', '-', $kategori)) ?>">
+                <div id="<?= strtolower(str_replace(' ', '-', htmlspecialchars($kategori))) ?>">
                     <h2 class="text-center pb-1 font-monospace">
-                        <?= $kategori ?>
+                        <?= htmlspecialchars($kategori) ?>
                     </h2>
 
                     <div class="row">
@@ -62,27 +55,27 @@ foreach ($produk as $p) {
                                 <div class="col-lg-3 col-md-4 col-6 HP my-4">
                                     <div class="card card-hover-scale">
 
-                                        <!-- GAMBAR -->
-                                        <img src="../../../assets/img/produk/<?= $p['gambar'] ?>"
+                                        <img src="../../../assets/img/produk/<?= htmlspecialchars($p['gambar']) ?>"
                                             class="card-img-top"
-                                            alt="<?= $p['nama_produk'] ?>">
+                                            alt="<?= htmlspecialchars($p['nama_produk']) ?>">
 
                                         <div class="card-body d-flex flex-column">
 
-                                            <!-- NAMA PRODUK -->
                                             <p class="mb-1">
-                                                <span class="fs-6 fw-bold"><?= $p['nama_produk'] ?></span><br>
-                                                <small class="text-muted"><?= $p['nama_kategori'] ?></small>
+                                                <span class="fs-6 fw-bold">
+                                                    <?= htmlspecialchars($p['nama_produk']) ?>
+                                                </span><br>
+                                                <small class="text-muted">
+                                                    <?= htmlspecialchars($p['nama_kategori']) ?>
+                                                </small>
                                             </p>
 
-                                            <!-- HARGA -->
                                             <div class="mb-1">
                                                 <span class="fw-bold text-dark">
-                                                    Rp <?= number_format($p['harga']) ?>
+                                                    Rp <?= number_format($p['harga'], 0, ',', '.') ?>
                                                 </span>
                                             </div>
 
-                                            <!-- STOK -->
                                             <p class="mt-2 mb-2 small">
                                                 <?php if ($p['stok'] > 0): ?>
                                                     <span class="text-success">Stok tersedia</span>
@@ -92,53 +85,37 @@ foreach ($produk as $p) {
                                             </p>
 
                                             <?php if ($p['stok'] > 0): ?>
-                                                <!-- FORM KERANJANG -->
-                                                <form action="../../../controllers/keranjang.php"
-                                                    method="POST"
-                                                    class="mb-2">
-
-                                                    <input type="hidden" name="id_produk"
-                                                        value="<?= $p['id_produk'] ?>">
+                                                <form action="../../../controllers/keranjang.php" method="POST" class="mb-2">
+                                                    <input type="hidden" name="id_produk" value="<?= (int)$p['id_produk'] ?>">
 
                                                     <input type="number"
                                                         name="qty"
                                                         min="1"
-                                                        max="<?= $p['stok'] ?>"
+                                                        max="<?= (int)$p['stok'] ?>"
                                                         class="form-control form-control-sm mb-2"
                                                         placeholder="Jumlah"
                                                         required>
 
-                                                    <select name="ukuran"
-                                                        class="form-select form-select-sm mb-2"
-                                                        required>
+                                                    <select name="ukuran" class="form-select form-select-sm mb-2" required>
                                                         <option value="">Pilih Ukuran</option>
-                                                        <option value="S">S</option>
-                                                        <option value="M">M</option>
-                                                        <option value="L">L</option>
-                                                        <option value="XL">XL</option>
+                                                        <option>S</option>
+                                                        <option>M</option>
+                                                        <option>L</option>
+                                                        <option>XL</option>
                                                     </select>
 
-                                                    <button type="submit"
-                                                        name="add_cart"
+                                                    <button type="submit" name="add_cart"
                                                         class="btn btn-warning btn-sm w-100">
                                                         ➕ Keranjang
                                                     </button>
                                                 </form>
                                             <?php endif; ?>
 
-                                            <!-- BUTTON -->
                                             <div class="mt-auto">
-                                                <a href="detail.php?id=<?= $p['id_produk'] ?>"
+                                                <a href="detail.php?id=<?= (int)$p['id_produk'] ?>"
                                                     class="btn btn-outline-secondary btn-sm w-100 mb-2">
                                                     Detail
                                                 </a>
-
-                                                <!-- <?php if ($p['stok'] > 0): ?>
-                                                    <a href="../keranjang/index.php"
-                                                        class="btn btn-primary btn-sm w-100">
-                                                        Beli
-                                                    </a>
-                                                <?php endif; ?> -->
                                             </div>
 
                                         </div>
@@ -155,20 +132,19 @@ foreach ($produk as $p) {
         </div>
     </div>
 
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-    <script src="../../../assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="../../../assets/js/script.js"></script> -->
+    <script src="../../../assets/js/produk-slider.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
         AOS.init({
             once: true,
             duration: 1500,
-
         });
     </script>
+
+
 </body>
 
 </html>
