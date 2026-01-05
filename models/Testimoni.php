@@ -58,7 +58,7 @@ class Testimoni extends QueryBuilder
         return $stmt->get_result()->num_rows > 0;
     }
 
-    
+
     // Insert testimoni
     public function create($data)
     {

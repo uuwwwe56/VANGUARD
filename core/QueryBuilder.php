@@ -74,6 +74,4 @@ class QueryBuilder
             "DELETE FROM $this->table WHERE $pk='$id'"
         );
     }
-
-    
 }

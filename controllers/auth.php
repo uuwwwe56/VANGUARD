@@ -64,11 +64,18 @@ if (isset($_POST['action']) && $_POST['action'] === 'login') {
         $_SESSION['nama']    = $user['nama'];
         $_SESSION['role']    = $user['role'];
 
+        $_SESSION['alert'] = 'Login berhasil, selamat datang ' . $user['nama'];
+
         if ($user['role'] === 'admin') {
             header("Location: ../views/admin/dashboard.php");
         } else {
             header("Location: ../views/user/dashboard.php");
         }
+        exit;
+    } else {
+        // ❌ INI YANG KURANG
+        $_SESSION['error'] = 'Email atau password salah atau belum terdaftar';
+        header("Location: ../views/auth/login.php");
         exit;
     }
 }
