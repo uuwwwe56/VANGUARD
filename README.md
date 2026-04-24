@@ -1,0 +1,1 @@
+vanguard adalah perangkat lunak anti-cheat berbasis kernel-mode yang dikembangkan oleh Riot Games untuk menjamin integritas kompetitif game seperti VALORANT dan League of Legends. Ini wajib diinstal agar game bisa berjalan dan bekerja dengan memantau kecurangan secara real-time.
